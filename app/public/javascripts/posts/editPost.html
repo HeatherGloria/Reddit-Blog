@@ -1,0 +1,45 @@
+<!-- cedit post form just a cop nothing is changed -->
+
+<h1 class="page-heading">
+  {{$ctrl.post.title}}
+</h1>
+
+
+<div class="row">
+
+  <div class="col-md-8">
+
+    <form name="form" ng-submit="$ctrl.updatePost()">
+      <div ng-class="{'has-error': form.title.$invalid && form.title.$touched}" class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" class="form-control" ng-model="$ctrl.post.title" required>
+        <span ng-show="form.title.$invalid && form.title.$touched">Field can not be empty!</span>
+
+      </div>
+
+      <div ng-class="{'has-error': form.body.$invalid && form.body.$touched}">
+        <label for="body">Body</label>
+        <textarea ng-model="$ctrl.post.body" class="form-control" name="body" type="text" required></textarea>
+        <span ng-show="form.body.$invalid && form.body.$touched">Field must be longer!!</span>
+
+      </div>
+      <div ng-class="{'has-error': form.author.$invalid && form.author.$touched}">
+        <label for="author">Author</label>
+        <input ng-model="$ctrl.post.author" class="form-control" name="author" type="text" required>
+        <span ng-show="form.author.$invalid && form.author.$touched">Field must have an Author!!</span>
+      </div>
+
+      <div ng-class="{'has-error': form.image_url.$invalid && form.image_url.$touched}">
+        <label for="image_url">Image URL</label>
+        <input name="image_url" type="text" ng-model="$ctrl.post.image_url" class="form-control" required>
+        <span ng-show="$ctrl.post.image_url.$invalid && form.image_url.$touched">Field must have a photo!</span>
+
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">
+            Update Post
+          </button>
+      </div>
+    </form>
+  </div>
+</div>
